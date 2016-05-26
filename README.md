@@ -1,43 +1,8 @@
----
-
----
-
----
-
----
-
----
-
----
-
 # Fetch API
- The XMLHttpRequest on steroids
+The XMLHttpRequest on steroids
 
----
-
----
-
----
-
----
-
----
-
-----
-
----
-
----
-
----
-
----
-
----
-
----
 ## XMLHttpRequest Object
-```
+```javascript
 const Request = new XMLHttpRequest();
 
 Request.setRequestHeader('Accept', 'application/json');
@@ -51,27 +16,6 @@ Request.onreadystatechange = function () {
 Request.open('GET', 'some_resource.json', true);
 Request.send();
 ```
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
 
 ## Promises
 [Here's](https://www.promisejs.org/) an explanation of why you should use promises.
@@ -84,7 +28,7 @@ The core idea behind promises is that a promise represents the result of an asyn
 
 Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again).
 
-```
+```javascript
 const getData = new Promise(resolvePromise);
 
 const resolvePromise = function (fulfill, reject) {
@@ -100,32 +44,8 @@ const resolvePromise = function (fulfill, reject) {
 // a promise: fulfilled | rejected
 const promisedData = getData('some-resource.json');
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### Refactor da coud.
-
-```
+```javascript
 const getData = function (uri) {
 	return new Promise(function (fulfill, reject) {
 		// sync request
@@ -148,32 +68,9 @@ const remaining = promisedData.then(function (data) {
 
 console.log(remaining); // Promise < pending >
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### Something went wrong
 
-```
+```javascript
 const promisedData = getData('some_resource.json');
 
 const remaining = promisedData.then(function (data) {
@@ -187,31 +84,9 @@ remaining.catch(function (err) {
 });
 ```
 
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### Moar promises!
 
-```
+```javascript
 const promisedData = getData('some_resource.json');
 
 const remaining = promisedData.then(function (data) {
@@ -227,35 +102,12 @@ moar_remaining.catch(function (err) {
 	// If rejected, do something
 });
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### Resolution algorithm
 
 ![promise-algorithm](https://idiotwu.me/content/images/2015/03/promise-then-catch-flow.png)
 
 ### Refactor da coud.
-```
+```javascript
 const promisedData = getData('some_resource.json');
 
 promisedData
@@ -270,59 +122,13 @@ promisedData
 		console.error(err.message);
 	});
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### Moar reafactor!!!
-```
+```javascript
 getData('some_resource.json')
 	.then(transformData)
 	.then(logData)
 	.catch(handleError);
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ## Finally: fetch
 [Fetch API] provides an interface for fetching resources... but the new API provides a more powerful and flexible feature set.
 
@@ -331,7 +137,7 @@ getData('some_resource.json')
 - Request
 - Headers
 
-```
+```javascript
 const headers = new Headers();
 headers.append('Accept', 'application/json');
 
@@ -340,58 +146,14 @@ const request = new Request('some-uri', headers);
 const response = new Response({ data: { /* ... */} });
 ```
 
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ### How to use it
-```
+```javascript
 // GlobalFetch.fetch | window.fetch | fetch
 fetch('some-resource.json')
 	.then((res) => res.json())
 	.then((data) => console.log(data))
 	.catch((err) => console.error(err.message));
 ```
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
 
 ### Not only JSON
 
@@ -402,28 +164,6 @@ fetch('some-resource.json')
 - Body.json
 - Text
 
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
 ## Support
 **Chrome** supports everything...
 **IE** don't support anything...
@@ -432,27 +172,5 @@ fetch('some-resource.json')
 ### Polifyll
 [browser](https://www.npmjs.com/package/whatwg-fetch)
 [node](https://github.com/bitinn/node-fetch)
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
-
----
 
 # Thanks!
