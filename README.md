@@ -9,8 +9,8 @@ Request.setRequestHeader('Accept', 'application/json');
 
 Request.onreadystatechange = function () {
 	if (xhttp.readyState == 4 && xhttp.status == 200) {
-	    document.getElementById("demo").innerHTML = xhttp.responseText;
-  }
+		document.getElementById("demo").innerHTML = xhttp.responseText;
+	}
 };
 
 Request.open('GET', 'some_resource.json', true);
