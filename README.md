@@ -1,6 +1,41 @@
-PI
- The XMLHttpRequest Replace
+---
 
+---
+
+---
+
+---
+
+---
+
+---
+
+# Fetch API
+ The XMLHttpRequest on steroids
+
+---
+
+---
+
+---
+
+---
+
+---
+
+----
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 ## XMLHttpRequest Object
 ```
 const Request = new XMLHttpRequest();
@@ -16,6 +51,27 @@ Request.onreadystatechange = function () {
 Request.open('GET', 'some_resource.json', true);
 Request.send();
 ```
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 ## Promises
 [Here's](https://www.promisejs.org/) an explanation of why you should use promises.
@@ -45,6 +101,28 @@ const resolvePromise = function (fulfill, reject) {
 const promisedData = getData('some-resource.json');
 ```
 
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
 ### Refactor da coud.
 
 ```
@@ -71,6 +149,28 @@ const remaining = promisedData.then(function (data) {
 console.log(remaining); // Promise < pending >
 ```
 
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
 ### Something went wrong
 
 ```
@@ -86,6 +186,28 @@ remaining.catch(function (err) {
 	console.error(err.message); // 'No data returned'
 });
 ```
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 ### Moar promises!
 
@@ -105,6 +227,28 @@ moar_remaining.catch(function (err) {
 	// If rejected, do something
 });
 ```
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 ### Resolution algorithm
 
@@ -127,6 +271,28 @@ promisedData
 	});
 ```
 
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
 ### Moar reafactor!!!
 ```
 getData('some_resource.json')
@@ -134,6 +300,28 @@ getData('some_resource.json')
 	.then(logData)
 	.catch(handleError);
 ```
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 ## Finally: fetch
 [Fetch API] provides an interface for fetching resources... but the new API provides a more powerful and flexible feature set.
@@ -152,17 +340,58 @@ const request = new Request('some-uri', headers);
 const response = new Response({ data: { /* ... */} });
 ```
 
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
 ### How to use it
 ```
-const headers = {
-	Accept: 'application/json'
-};
-
-fetch('some-resource.json', { headers })
+// GlobalFetch.fetch | window.fetch | fetch
+fetch('some-resource.json')
 	.then((res) => res.json())
 	.then((data) => console.log(data))
 	.catch((err) => console.error(err.message));
 ```
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 ### Not only JSON
 
@@ -173,6 +402,28 @@ fetch('some-resource.json', { headers })
 - Body.json
 - Text
 
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
 ## Support
 **Chrome** supports everything...
 **IE** don't support anything...
@@ -181,5 +432,27 @@ fetch('some-resource.json', { headers })
 ### Polifyll
 [browser](https://www.npmjs.com/package/whatwg-fetch)
 [node](https://github.com/bitinn/node-fetch)
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 # Thanks!
