@@ -161,12 +161,12 @@ fetch('some-resource.json')
 - Blob
   - URI
   - File
-- Body.json
+- JSON
 - Text
 
 ## Support
-**Chrome** supports everything...
-**IE** don't support anything...
+**Chrome** supports everything...  
+**IE** don't support anything...  
 **The rest**... who cares?
 
 ### Polifyll
